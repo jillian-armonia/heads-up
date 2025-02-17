@@ -199,6 +199,20 @@ const wordCategories = {
       "blanket",
       "bookcase",
       "fridge",
+    ],
+
+    example: [
+      "English",
+      "Japanese",
+      "art",
+      "math",
+      "science",
+      "technology",
+      "social studies",
+      "moral education",
+      "home economics",
+      "P.E.",
+      "music"
     ]
   }
 
