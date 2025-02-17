@@ -31,3 +31,10 @@ h2{
     font-family: cursive;
     font-size: 2em;
 }
+
+#word{
+    text-align: center;
+    padding: 10px;
+    font-size: calc(4rem + 2vw);
+    background-color: whitesmoke;
+}
