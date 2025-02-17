@@ -59,3 +59,12 @@ h2{
 #get{
     background-color: greenyellow;
 }
+
+#game-info{
+    padding: 10px;
+}
+
+#game-info p:nth-of-type(2){
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5em;
+}
