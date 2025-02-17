@@ -1,0 +1,33 @@
+body{
+    font-family: cursive;
+    margin: 0;
+}
+
+#categories{
+    position: absolute;
+    z-index: 1;
+    background-color: lightgray;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+}
+
+#category-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2{
+    font-size: 3em;
+    margin: 10px;
+}
+
+.category{
+    font-family: cursive;
+    font-size: 2em;
+}
