@@ -204,7 +204,7 @@ const wordCategories = {
 
   let currentCategory;
   let remainingWords;
-  let currentIndex;
+  let currentIndex = 0;
   let score = 0;
   const pass = document.getElementById("pass");
   const get = document.getElementById("get");
@@ -223,10 +223,10 @@ const wordCategories = {
   function setCategory(){
     const allCategories = categories.querySelectorAll(".category");
     allCategories.forEach(category => {
-      category.onclick = () => {
+      category.addEventListener("click", () => {
         currentCategory = wordCategories[category.id];
         initializeGame();
-      }
+      })
     })
   }
 
@@ -234,7 +234,7 @@ const wordCategories = {
     //USE Math.floor and Math.random multiplied to the category's length
 
   function getRandomNumber(){
-    currentIndex = Math.floor(Math.random() * currentCategory.length);
+    return Math.floor(Math.random() * currentCategory.length);
   }
 
   // function setRandomWord
@@ -242,6 +242,8 @@ const wordCategories = {
 
   function setRandomWord(){
     word.innerHTML = currentCategory[currentIndex];
+
+    if (remainingWords == 0) word.innerHTML = "";
   }
 
   // function countRemaining
@@ -260,6 +262,18 @@ const wordCategories = {
   function setScore(){
     const scoreSpan = document.getElementById("score");
     scoreSpan.innerHTML = `${score}`;
+  }
+
+  // function checkEnd
+    //IF there are no more remaining cards
+        //RELOAD the window
+    //ELSE continue
+
+  function checkEnd(){
+    if (remainingWords == 0){
+        get.disabled = true;
+        pass.disabled = true;
+    } else return;
   }
 
   // ADD an eventListener for the pass button
@@ -285,6 +299,7 @@ const wordCategories = {
     countRemaining();
     currentIndex = getRandomNumber();
     setRandomWord();
+    checkEnd();
   }
 
   // ADD an eventListener for the reset button
@@ -293,6 +308,10 @@ const wordCategories = {
   reset.onclick = () => {
     score = 0;
     setScore();
+
+    if (remainingWords == 0){
+        window.location.reload();
+    } else return;
   }
 
   // ADD an eventListener for the hide button
@@ -330,3 +349,5 @@ const wordCategories = {
     countRemaining();
     setScore();
   }
+
+  window.addEventListener('load', setCategory)
