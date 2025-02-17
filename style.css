@@ -32,17 +32,25 @@ h2{
     font-size: 2em;
 }
 
+#game{
+    display: flex;
+    flex-direction: column;
+}
+
 #word{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
     font-size: calc(4rem + 2vw);
     background-color: whitesmoke;
+    height: 300px;
 }
 
 #game-buttons{
     display: flex;
     justify-content: space-between;
-    padding: 10px;
     border-top: solid darkgrey 2px;
 }
 
@@ -50,6 +58,7 @@ h2{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2em;
     width: 30%;
+    padding: 10px 0;
 }
 
 #pass{
@@ -67,4 +76,15 @@ h2{
 #game-info p:nth-of-type(2){
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 1.5em;
+}
+
+#reset, #hide{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2em;
+    margin: 0 20px 0 0;
+}
+
+#reset{
+    font-weight: 600;
+    background-color: rgb(249, 94, 94);
 }
