@@ -38,3 +38,24 @@ h2{
     font-size: calc(4rem + 2vw);
     background-color: whitesmoke;
 }
+
+#game-buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-top: solid darkgrey 2px;
+}
+
+#game-buttons button{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2em;
+    width: 30%;
+}
+
+#pass{
+    background-color: gold;
+}
+
+#get{
+    background-color: greenyellow;
+}
