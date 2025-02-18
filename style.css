@@ -55,9 +55,21 @@ h2{
     width: 15%;
 }
 
+#customize h3{
+    font-size: 2.2em;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#customize button{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2;
+}
+
 ul{
     padding: 0;
     margin: 0;
+    width: 10%;
+    font-size: 2em;
 }
 
 #game{
