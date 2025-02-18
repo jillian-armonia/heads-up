@@ -213,7 +213,9 @@ const wordCategories = {
       "home economics",
       "P.E.",
       "music"
-    ]
+    ],
+
+    custom: [],
   }
 
   let currentCategory;
@@ -227,6 +229,11 @@ const wordCategories = {
   const word = document.getElementById("word");
   const categories = document.getElementById("categories");
   const docu = document.documentElement;
+  const custom = document.getElementById("custom");
+  const customize = document.getElementById("customize");
+  const cTitle = document.getElementById("c-title")
+  const addInput = document.getElementById("add");
+  const addBtn = document.getElementById("add-button");
 
   function openFullscreen(){
     if (docu.requestFullscreen){
@@ -311,6 +318,28 @@ const wordCategories = {
     } else return;
   }
 
+  // function addWord
+    //GET the value of the text input
+    //IF the value is empty, return
+    //ELSE create a new li element
+      //ADD a textnode and append it to the li element
+      //APPEND the li element to the list
+      //PUSH the value into the category array
+      //CLEAR the input value
+
+    function addWord(category){
+      let word = addInput.value;
+      if (word == "") return;
+
+      let li = document.createElement('li');
+      let newItem = document.createTextNode(word);
+      li.appendChild(newItem);
+      document.getElementById('c-list').appendChild(li);
+      wordCategories[category].push(word);
+      addInput.value = "";
+
+    }
+
   // ADD an eventListener for the pass button
     // USE getRandomNumber and REASSING currentWord
     // USE setRandomWord
@@ -371,6 +400,31 @@ const wordCategories = {
     }
   }
 
+  //ADD a click function for custom
+    //SET the display for customize div as flex
+    //SET the innerHTML of h3 as the innerHTML of the specific button
+
+  custom.onclick = () => {
+    customize.style.display = "flex";
+    cTitle.innerHTML = custom.innerHTML;
+  }
+
+  //ADD a click function for the customize enter button
+
+  addBtn.onclick = () => {
+    addWord("custom");
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") addBtn.click();
+  })
+
+  document.getElementById('start').onclick = () =>{
+    currentCategory = wordCategories.custom;
+    initializeGame();
+    openFullscreen();
+  }
+
   //function initializeGame
     //SET the display of the categories div to none
     //ASSIGN the currentWord using currentCategory[currentIndex]
@@ -378,6 +432,7 @@ const wordCategories = {
 
   function initializeGame(){
     categories.style.display = 'none';
+    customize.style.display = 'none';
     score = 0;
     currentIndex = getRandomNumber();
     setRandomWord();

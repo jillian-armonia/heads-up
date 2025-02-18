@@ -44,14 +44,15 @@ h2{
     z-index: 2;
     background-color: lightskyblue;
     display: none;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     text-align: center;
     flex-direction: column;
+    gap: 10px;
 }
 
-#custom{
-    display: none;
+#start{
+    width: 15%;
 }
 
 ul{
