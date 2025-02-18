@@ -12,7 +12,7 @@ button{
     z-index: 1;
     background-color: lightgray;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
@@ -58,23 +58,45 @@ h2{
 #customize h3{
     font-size: 2.2em;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 10px;
 }
 
 #customize button{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2;
+    font-size: 1.2em;
+}
+
+#customize input{
+    font-size: 1.2em;
 }
 
 ul{
-    padding: 0;
-    margin: 0;
-    width: 10%;
+    width: 90%;
     font-size: 2em;
+    list-style: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+ul li{
+    width: inherit;
+    margin-bottom: 5px ;
+}
+
+.close{
+    background-color: lightcoral;
+    padding: 0 5px;
+    border-radius: 2px;
+    margin-left: 20px;
 }
 
 #custom{
     background-color: darkgray;
     color: whitesmoke;
+    font-size: 1.2em;
 }
 
 #game{
@@ -84,7 +106,7 @@ ul{
 
 #word{
     text-align: center;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     padding: 10px;

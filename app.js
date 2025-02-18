@@ -328,16 +328,23 @@ const wordCategories = {
       //CLEAR the input value
 
     function addWord(category){
+      let index = category.length;
       let word = addInput.value;
       if (word == "") return;
 
+      index++;
       let li = document.createElement('li');
+      let button = document.createElement('button');
       let newItem = document.createTextNode(word);
+
+
+      button.classList.add('close');
+      button.innerHTML = "x";
       li.appendChild(newItem);
+      li.appendChild(button);
       document.getElementById('c-list').appendChild(li);
       wordCategories[category].push(word);
       addInput.value = "";
-
     }
 
   // ADD an eventListener for the pass button
@@ -433,6 +440,7 @@ const wordCategories = {
   function initializeGame(){
     categories.style.display = 'none';
     customize.style.display = 'none';
+    word.style.display ='flex';
     score = 0;
     currentIndex = getRandomNumber();
     setRandomWord();
@@ -441,3 +449,9 @@ const wordCategories = {
   }
 
   window.addEventListener('load', setCategory)
+
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains("close")){
+      e.target.parentNode.remove()
+    }
+  })
