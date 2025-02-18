@@ -72,6 +72,11 @@ ul{
     font-size: 2em;
 }
 
+#custom{
+    background-color: darkgray;
+    color: whitesmoke;
+}
+
 #game{
     display: flex;
     flex-direction: column;
