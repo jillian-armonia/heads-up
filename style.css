@@ -91,6 +91,7 @@ ul li{
     padding: 0 5px;
     border-radius: 2px;
     margin-left: 20px;
+    display: none;
 }
 
 #custom{

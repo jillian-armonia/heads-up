@@ -328,7 +328,7 @@ const wordCategories = {
       //CLEAR the input value
 
     function addWord(category){
-      let index = category.length;
+      let index = wordCategories[category].length;
       let word = addInput.value;
       if (word == "") return;
 
@@ -340,6 +340,7 @@ const wordCategories = {
 
       button.classList.add('close');
       button.innerHTML = "x";
+      li.id = `custom${index}`
       li.appendChild(newItem);
       li.appendChild(button);
       document.getElementById('c-list').appendChild(li);
@@ -452,6 +453,8 @@ const wordCategories = {
 
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains("close")){
+      let i = e.target.parentNode.id.match(/\d+/)[0]
+      console.log(i)
       e.target.parentNode.remove()
     }
   })
