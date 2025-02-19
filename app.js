@@ -235,26 +235,6 @@ const wordCategories = {
   const addInput = document.getElementById("add");
   const addBtn = document.getElementById("add-button");
 
-  function openFullscreen(){
-    if (docu.requestFullscreen){
-      docu.requestFullscreen();
-    } else if (docu.webkitRequestFullscreen){
-      docu.webkitRequestFullscreen();
-    } else if (docu.msRequestFullscreen){
-      docu.msRequestFullscreen();
-    }
-  }
-
-  function closeFullscreen(){
-    if (document.exitFullscreen){
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen){
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullScreen){
-      document.webkitExitFullscreen();
-    }
-  }
-
   //function setCategory
     //ITERATE through the wordCategories
       //ADD a click eventListener
@@ -267,7 +247,6 @@ const wordCategories = {
       category.addEventListener("click", () => {
         currentCategory = wordCategories[category.id];
         initializeGame();
-        openFullscreen();
       })
     })
   }
@@ -430,7 +409,6 @@ const wordCategories = {
   document.getElementById('start').onclick = () =>{
     currentCategory = wordCategories.custom;
     initializeGame();
-    openFullscreen();
   }
 
   //function initializeGame
