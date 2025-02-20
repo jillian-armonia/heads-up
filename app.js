@@ -309,7 +309,7 @@ const wordCategories = {
     function addWord(category){
       let index = wordCategories[category].length;
       let word = addInput.value;
-      if (word == "") return;
+      if (word == "" || wordCategories[category].indexOf(word) !== -1) return;
 
       index++;
       let li = document.createElement('li');
@@ -319,7 +319,7 @@ const wordCategories = {
 
       button.classList.add('close');
       button.innerHTML = "x";
-      li.id = `custom${index}`
+      li.id = `custom-${word}`
       li.appendChild(newItem);
       li.appendChild(button);
       document.getElementById('c-list').appendChild(li);
@@ -411,6 +411,10 @@ const wordCategories = {
     initializeGame();
   }
 
+  document.getElementById('close-edit').onclick = (e) => {
+    e.target.parentNode.style.display = "none";
+  }
+
   //function initializeGame
     //SET the display of the categories div to none
     //ASSIGN the currentWord using currentCategory[currentIndex]
@@ -431,8 +435,11 @@ const wordCategories = {
 
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains("close")){
-      let i = e.target.parentNode.id.match(/\d+/)[0]
-      console.log(i)
+      let word = e.target.parentNode.id.match(/[^custom-]\w+/)[0]
+      let i = wordCategories["custom"].indexOf(word);
+
+      wordCategories["custom"].splice(i, 1);
+      console.log(wordCategories["custom"])
       e.target.parentNode.remove()
     }
   })
