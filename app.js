@@ -17,11 +17,6 @@ const wordCategories = {
       "baseball",
       "rugby",
       "track and field",
-      "long-distance running",
-      "high jump",
-      "long jump",
-      "hundred-meter dash",
-      "shot put"
     ],
 
     food: [
@@ -234,6 +229,34 @@ const wordCategories = {
   const cTitle = document.getElementById("c-title")
   const addInput = document.getElementById("add");
   const addBtn = document.getElementById("add-button");
+  const allEditBtns = document.querySelectorAll(".edit");
+
+  allEditBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      let category = btn.id.match(/\w+/)[0];
+      let ul = document.createElement('ul');
+      ul.id = `${category}-list`;
+      customize.appendChild(ul);
+
+      customize.style.display = "flex";
+      cTitle.textContent = category.toUpperCase();
+      document.getElementById('start').style.display = 'none';
+
+      wordCategories[category].forEach(word => {
+        let li = document.createElement('li');
+        let button = document.createElement('button')
+        let newItem = document.createTextNode(word);
+
+
+        button.classList.add('close');
+        button.textContent = "x";
+        li.id = `${category}-${word}`
+        li.appendChild(newItem);
+        li.appendChild(button);
+        ul.appendChild(li);
+      })
+    })
+  })
 
   //function setCategory
     //ITERATE through the wordCategories
@@ -262,9 +285,9 @@ const wordCategories = {
     //INSERT the currentWord in the word div
 
   function setRandomWord(){
-    word.innerHTML = currentCategory[currentIndex];
+    word.textContent = currentCategory[currentIndex];
 
-    if (remainingWords == 0) word.innerHTML = "";
+    if (remainingWords == 0) word.textContent = "";
   }
 
   // function countRemaining
@@ -274,7 +297,7 @@ const wordCategories = {
   function countRemaining(){
     remainingWords = currentCategory.length;
     const cards = document.getElementById("cards");
-    cards.innerHTML = `${remainingWords}`;
+    cards.textContent = `${remainingWords}`;
   }
 
   // function setScore
@@ -282,7 +305,7 @@ const wordCategories = {
 
   function setScore(){
     const scoreSpan = document.getElementById("score");
-    scoreSpan.innerHTML = `${score}`;
+    scoreSpan.textContent = `${score}`;
   }
 
   // function checkEnd
@@ -318,8 +341,8 @@ const wordCategories = {
 
 
       button.classList.add('close');
-      button.innerHTML = "x";
-      li.id = `custom-${word}`
+      button.textContent = "x";
+      li.id = `${category}-${word}`
       li.appendChild(newItem);
       li.appendChild(button);
       document.getElementById('c-list').appendChild(li);
@@ -376,12 +399,12 @@ const wordCategories = {
   hide.onclick = () => {
     if (word.style.display !== 'none'){
         word.style.display = "none";
-        hide.innerHTML = "UNHIDE";
+        hide.textContent = "UNHIDE";
         hide.style.color = "white";
         hide.style.backgroundColor = "darkgray";
     } else {
         word.style.display = "flex";
-        hide.innerHTML = "HIDE";
+        hide.textContent = "HIDE";
         hide.style.color = "black";
         hide.style.backgroundColor = "rgb(240, 240, 240)";
     }
@@ -389,11 +412,11 @@ const wordCategories = {
 
   //ADD a click function for custom
     //SET the display for customize div as flex
-    //SET the innerHTML of h3 as the innerHTML of the specific button
+    //SET the textContent of h3 as the textContent of the specific button
 
   custom.onclick = () => {
     customize.style.display = "flex";
-    cTitle.innerHTML = custom.innerHTML;
+    cTitle.textContent = custom.textContent;
   }
 
   //ADD a click function for the customize enter button

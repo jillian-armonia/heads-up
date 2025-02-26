@@ -9,27 +9,29 @@
 <body>
       <div id="categories">
         <h2>Choose a category:</h2>
-        <div id="category-buttons">
-          <button id="sports" class="category">Sports</button>
-          <button id="food" class="category">Food</button>
-          <button id="places" class="category">Places</button>
-          <button id="jobs" class="category">Jobs</button>
-          <button id="classroom" class="category">Classroom Items</button>
-          <button id="house" class="category">House Items/Places</button>
-          <button id="example" class="category">Example</button>
-          <button id="custom">CUSTOM</button>
-        </div>
+          <ul id="category-buttons">
+            <li><button id="sports" class="category">Sports</button><button id="sports-edit" class="edit">edit</button></li>
+            <li><button id="food" class="category">Food</button><button id="food-edit" class="edit">edit</button></li>
+            <li><button id="places" class="category">Places</button><button id="places-edit" class="edit">edit</button></li>
+            <li><button id="jobs" class="category">Jobs</button><button id="jobs-edit" class="edit">edit</button></li>
+            <li><button id="classroom" class="category">Classroom Items</button><button id="classroom-edit" class="edit">edit</button></li>
+            <li><button id="house" class="category">House Items/Places</button><button id="house-edit" class="edit">edit</button></li>
+            <li><button id="example" class="category">Example</button><button id="example-edit" class="edit">edit</button></li>
+
+          </ul>
+
+        <button id="custom">CUSTOM</button>
       </div>
 
       <div id="customize">
         <button id="close-edit">x</button>
         <h3 id="c-title"></h3>
-        <ul id="c-list"></ul>
         <div>
           <input type="text" name="add" id="add">
           <button id="add-button">Enter</button>
         </div>
         <button id="start">Start with Custom</button>
+        <ul id="c-list"></ul>
       </div>
 
 
