@@ -237,6 +237,7 @@ const wordCategories = {
       let ul = document.createElement('ul');
       ul.id = `${category}-list`;
       customize.appendChild(ul);
+      currentCategory = category;
 
       customize.style.display = "flex";
       cTitle.textContent = category.toUpperCase();
@@ -250,7 +251,6 @@ const wordCategories = {
 
         button.classList.add('close');
         button.textContent = "x";
-        li.id = `${category}-${word}`
         li.appendChild(newItem);
         li.appendChild(button);
         ul.appendChild(li);
@@ -345,7 +345,7 @@ const wordCategories = {
       li.id = `${category}-${word}`
       li.appendChild(newItem);
       li.appendChild(button);
-      document.getElementById('c-list').appendChild(li);
+      document.getElementById(`${category}-list`).appendChild(li);
       wordCategories[category].push(word);
       addInput.value = "";
     }
@@ -417,12 +417,16 @@ const wordCategories = {
   custom.onclick = () => {
     customize.style.display = "flex";
     cTitle.textContent = custom.textContent;
+    const list = document.createElement("ul");
+    list.id = "custom-list"
+    customize.appendChild(list);
+    currentCategory = "custom"
   }
 
   //ADD a click function for the customize enter button
 
   addBtn.onclick = () => {
-    addWord("custom");
+    addWord(currentCategory);
   }
 
   document.addEventListener("keydown", (e) => {
@@ -436,6 +440,7 @@ const wordCategories = {
 
   document.getElementById('close-edit').onclick = (e) => {
     e.target.parentNode.style.display = "none";
+    document.getElementById(`${currentCategory}-list`).remove()
   }
 
   //function initializeGame
@@ -458,11 +463,10 @@ const wordCategories = {
 
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains("close")){
-      let word = e.target.parentNode.id.match(/[^custom-]\w+/)[0]
-      let i = wordCategories["custom"].indexOf(word);
+      let word = e.target.parentNode.innerText.match(/\w+[^x]/)[0]
+      let i = wordCategories[currentCategory].indexOf(word);
 
-      wordCategories["custom"].splice(i, 1);
-      console.log(wordCategories["custom"])
+      wordCategories[currentCategory].splice(i, 1);
       e.target.parentNode.remove()
     }
   })
